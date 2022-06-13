@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using NLayer.API.Filters;
 
 namespace NLayer.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NLayer.API.Filters;
 using NLayer.Core.DTOs;
 using NLayer.Core.Models;
 using NLayer.Core.Services;
@@ -9,21 +10,21 @@ namespace NLayer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ProductsController : CustomBaseContreller
     {
         private readonly IMapper _mapper;
-        private readonly IService<Product> _service;
-        private readonly IProductService productService;
+        private readonly IProductService _service;
         public ProductsController(IService<Product> service, IMapper mapper = null,IProductService productService=null)
         {
-            _service = service;
+            _service = productService;
             _mapper = mapper;
-            this.productService = productService;
+
         }
         [HttpGet("[action]")]
         public async Task<IActionResult>GetProductWithCategory()
         {
-            return CreateActionResult(await productService.GetProductsWithCategory());
+            return CreateActionResult(await _service.GetProductsWithCategory());
         }
 
 

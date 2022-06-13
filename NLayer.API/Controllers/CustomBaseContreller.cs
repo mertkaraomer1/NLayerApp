@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NLayer.API.Filters;
 using NLayer.Core.DTOs;
 
 namespace NLayer.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
 
     public class CustomBaseContreller : ControllerBase
     {

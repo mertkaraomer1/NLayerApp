@@ -4,14 +4,13 @@ using NLayer.Core.Models;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
 using NLayer.Core.UnıtOfWorks;
-using NLayer.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayer.Service
+namespace NLayer.Service.Services
 {
     public class ProductService : Service<Product>, IProductService
     {
@@ -26,7 +25,7 @@ namespace NLayer.Service
         public async Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsWithCategory()
         {
             var products = await _productRepository.GetProductsWithCategory();
-            var productsDto=_mapper.Map<List<ProductWithCategoryDto>>(products);
+            var productsDto = _mapper.Map<List<ProductWithCategoryDto>>(products);
             return CustomResponseDto<List<ProductWithCategoryDto>>.Success(200, productsDto);
         }
     }
