@@ -11,9 +11,17 @@ using NLayer.Repository.UnýtOfWork;
 using NLayer.Service.Mapping;
 using NLayer.Service.Services;
 using NLayer.Service.Validations;
+using Serilog;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+var logger = new LoggerConfiguration()
+  .ReadFrom.Configuration(builder.Configuration)
+  .Enrich.FromLogContext()
+  .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
 
 // Add services to the container.
 
@@ -36,7 +44,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-
+builder.Services.AddLogging();
 
 
 builder.Services.AddDbContext<AppDbContext>(x =>

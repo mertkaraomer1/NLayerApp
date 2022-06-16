@@ -15,10 +15,12 @@ namespace NLayer.API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IProductService _service;
-        public ProductsController(IService<Product> service, IMapper mapper = null,IProductService productService=null)
+        private readonly ILogger<ProductsController> _logger;
+        public ProductsController(IService<Product> service, IMapper mapper = null,IProductService productService=null,ILogger<ProductsController> logger=null)
         {
             _service = productService;
             _mapper = mapper;
+            _logger = logger;
 
         }
         [HttpGet("[action]")]
@@ -42,6 +44,7 @@ namespace NLayer.API.Controllers
         [HttpGet("id")]
         public async Task<IActionResult> GetById(int id)
         {
+            _logger.LogInformation("Products executing...");
             var products = await _service.GetByIdAsync(id);
             var productsDto = _mapper.Map<ProductDto>(products);
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(200, productsDto));
