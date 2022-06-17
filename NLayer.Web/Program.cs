@@ -1,6 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using NLayer.Core.Repositories;
 using NLayer.Repository;
 using NLayer.Service.Mapping;
 using NLayer.Web.Modules;
@@ -10,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddDbContext<AppDbContext>(x =>
 {

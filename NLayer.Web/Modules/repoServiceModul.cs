@@ -10,7 +10,7 @@ using System.Reflection;
 using Module = Autofac.Module;
 namespace NLayer.Web.Modules
 {
-    public class repoServiceModul:Module
+    public class repoServiceModul : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -24,10 +24,10 @@ namespace NLayer.Web.Modules
 
 
             var apiAssembly = Assembly.GetExecutingAssembly();
-            var repoAssembly= Assembly.GetAssembly(typeof(AppContext));
-            var serviceAssembly= Assembly.GetAssembly(typeof(MapProfile));
-            builder.RegisterAssemblyTypes(apiAssembly,repoAssembly, serviceAssembly)
-                .Where(x=>x.Name.EndsWith("Repository")).AsImplementedInterfaces()
+            var repoAssembly = Assembly.GetAssembly(typeof(AppContext));
+            var serviceAssembly = Assembly.GetAssembly(typeof(MapProfile));
+            builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly)
+                .Where(x => x.Name.EndsWith("Repository")).AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
 
             builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly)

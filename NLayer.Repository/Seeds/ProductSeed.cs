@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NLayer.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLayer.Repository.Seeds
 {
@@ -36,7 +31,7 @@ namespace NLayer.Repository.Seeds
             new Product
             {
                 Id = 3,
-                CategoryId =2,
+                CategoryId = 2,
                 Name = "kitap 1",
                 Price = 3300,
                 Stock = 40,

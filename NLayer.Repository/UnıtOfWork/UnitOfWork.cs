@@ -1,9 +1,4 @@
 ﻿using NLayer.Core.UnıtOfWorks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLayer.Repository.UnıtOfWork
 {
@@ -18,7 +13,7 @@ namespace NLayer.Repository.UnıtOfWork
 
         public void Commit()
         {
-            _context.SaveChanges(); 
+            _context.SaveChanges();
         }
 
         public async Task CommitAsync()
