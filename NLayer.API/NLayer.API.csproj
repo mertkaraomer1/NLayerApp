@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NLayer.Caching\NLayer.Caching.csproj" />
+    <ProjectReference Include="..\NLayer.Web\NLayer.Web.csproj" />
   </ItemGroup>
 
 </Project>
